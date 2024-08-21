@@ -1,0 +1,19 @@
+
+{% extends 'blank_layout.html' %}
+{% load static  %} 
+{% block content %}
+<h1>List movies</h1>
+
+{%for movie_obj in movies%}
+<h1>Title : {{movie_obj.movie_name|upper}}</h1>
+<img src="{% static 'images/' %} {{ movie_obj.img }}">
+<p>Summary : {{movie_obj.summary|default:'no data availibale'}}</p>
+<h2>Year : {{movie_obj.year}}</h2> 
+{% if movie_obj.sucess %}
+<p>Movie was sucess at that time</p>
+{% else %}
+<p>Movie was Failer</p>
+{% endif %}
+{%endfor%}
+
+{% endblock content %}
